@@ -7,6 +7,35 @@
   --ne-bg-main: #F4F8FB;
   --ne-border: #dbdbdb;
   --ne-shadow: 0 1px 4px rgba(74,144,226,0.07);
+  --theme-switch-track: #ececec;
+  --theme-switch-thumb: #aaa;
+}
+
+/* Dark theme variables - set on .dark-theme */
+.dark-theme {
+  --ne-primary: #255aba;
+  --ne-secondary: #1A202b;
+  --ne-accent: #F5A623;
+  --ne-text-main: #f7f8fa;
+  --ne-text-secondary: #b9bad1;
+  --ne-bg-main: #121319;
+  --ne-border: #2b3144;
+  --ne-shadow: 0 1px 7px 1px #09112d68;
+  --theme-switch-track: #303952;
+  --theme-switch-thumb: #f7c065;
+}
+
+/* Transition for smooth theme switch */
+body,
+.noteease-main-bg,
+.noteease-main,
+.noteease-header,
+.noteease-footer,
+.noteease-modal,
+.category-chip,
+.noteease-note-card,
+.noteease-searchbar input {
+  transition: background 0.26s, color 0.22s, border 0.18s, box-shadow 0.22s;
 }
 
 body {
@@ -33,7 +62,46 @@ body {
   text-align: center;
   letter-spacing: 1px;
   box-shadow: var(--ne-shadow);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* Theme toggle button styles */
+.theme-toggle-btn {
+  position: absolute;
+  right: 24px;
+  top: 13px;
+  display: flex;
+  align-items: center;
+  background: var(--theme-switch-track);
+  border: none;
+  border-radius: 50px;
+  padding: 5px 15px;
+  color: var(--ne-text-main);
+  font-size: 1.05rem;
+  box-shadow: 0 2px 6px 0 #0001;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 1;
+  gap: 0.5em;
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--ne-accent);
+}
+
+.theme-toggle-icon {
+  font-size: 1.08em;
+  margin-right: 0.4em;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--ne-accent);
+  color: #fff;
+}
+
 .noteease-app-title {
   display: inline-flex;
   align-items: center;
@@ -54,6 +122,7 @@ body {
   border-radius: 12px;
   padding: 32px 28px 60px 28px;
   position: relative;
+  /* border: 1px solid var(--ne-border); */
 }
 
 .noteease-searchbar {
@@ -72,6 +141,11 @@ body {
   background: #f7faff;
   transition: border 0.2s;
 }
+.dark-theme .noteease-searchbar input {
+  background: #23293a;
+  color: var(--ne-text-main);
+}
+
 .noteease-searchbar input:focus {
   border: 1.5px solid var(--ne-primary);
 }
@@ -129,6 +203,17 @@ body {
   transition: box-shadow 0.17s;
   outline: none;
 }
+.dark-theme .noteease-note-card {
+  background: #1d2330;
+  color: var(--ne-text-main);
+  box-shadow: 0 2px 14px 0 #09112d52;
+}
+.dark-theme .noteease-note-card:focus,
+.dark-theme .noteease-note-card:hover {
+  box-shadow: 0 4px 18px 5px #0e183547;
+  background: #23293a;
+}
+
 .noteease-note-card:focus,
 .noteease-note-card:hover {
   box-shadow: 0 1px 18px 2px #e6eefb;
@@ -206,6 +291,16 @@ body {
   z-index: 201;
   transition: background 0.18s;
 }
+
+.dark-theme .noteease-fab {
+  background: var(--ne-accent);
+  color: #23293a;
+}
+.dark-theme .noteease-fab:hover {
+  background: var(--ne-primary);
+  color: #fff;
+}
+
 .noteease-fab:hover {
   background: var(--ne-accent);
 }
@@ -241,6 +336,26 @@ body {
   flex-direction: column;
   gap: 10px;
   animation: slideDownFade 0.21s cubic-bezier(.39,1.68,.73,1) 1;
+}
+.dark-theme .noteease-modal {
+  background: #181d29;
+  color: var(--ne-text-main);
+}
+.dark-theme .noteease-modal-title,
+.dark-theme .noteease-modal textarea {
+  background: #23293a;
+  color: var(--ne-text-main);
+}
+.dark-theme .category-chip {
+  background: #23293a;
+  color: var(--ne-text-secondary);
+}
+.dark-theme .category-chip.active,
+.dark-theme .category-chip:hover {
+  background: var(--ne-accent);
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 1px 5px 0 #f7c06532;
 }
 @keyframes slideDownFade {
   from { transform: translateY(-32px); opacity: 0; }
@@ -335,6 +450,15 @@ body {
   padding: 18px 0 8px 0;
   letter-spacing: 0.02em;
   background: none;
+}
+
+.dark-theme .noteease-footer {
+  color: #7486ba;
+  background: none;
+}
+
+.dark-theme .noteease-empty-message {
+  color: #5c6580;
 }
 
 @media (max-width: 750px) {

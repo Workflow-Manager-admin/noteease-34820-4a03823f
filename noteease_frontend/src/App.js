@@ -169,6 +169,10 @@ function FloatingActionButton({ onClick }) {
   );
 }
 
+/* Theme icons (inline SVG for theme switch) */
+const SunIcon = () => <span className="theme-toggle-icon" role="img" aria-label="Light mode">🌞</span>;
+const MoonIcon = () => <span className="theme-toggle-icon" role="img" aria-label="Dark mode">🌜</span>;
+
 // --- Main NoteEase Container ---
 
 // PUBLIC_INTERFACE
@@ -176,7 +180,28 @@ function NoteEaseMainContainer() {
   /*
     Main container for the NoteEase App
     Handles note CRUD, filtering and layout.
+    Manages application theme (light/dark).
   */
+
+  // theme state: 'light' | 'dark'
+  const [theme, setTheme] = React.useState(() => {
+    // Prefer user/system preference, fallback to light
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  });
+  // Apply theme class to document body
+  React.useEffect(() => {
+    const c = 'dark-theme';
+    if (theme === 'dark') {
+      document.body.classList.add(c);
+    } else {
+      document.body.classList.remove(c);
+    }
+  }, [theme]);
+  // Toggle theme
+  const toggleTheme = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
 
   // Notes state: {id, title, content, category}
   const [notes, setNotes] = useState([
@@ -262,6 +287,16 @@ function NoteEaseMainContainer() {
         <div className="noteease-app-title">
           <span className="logo-symbol">📝</span> NoteEase
         </div>
+        <button 
+          type="button"
+          className="theme-toggle-btn"
+          onClick={toggleTheme}
+          aria-label={theme === 'dark' ? "Switch to light theme" : "Switch to dark theme"}
+          title={theme === 'dark' ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          {theme === 'dark' ? "Light" : "Dark"}
+        </button>
       </header>
       <main className="noteease-main">
         <SearchBar value={search} onChange={setSearch} />
