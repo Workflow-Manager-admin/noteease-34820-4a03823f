@@ -39,18 +39,46 @@ body,
 }
 
 body {
-  background: var(--ne-bg-main);
+  /* Light theme gradient */
+  background: linear-gradient(135deg, #b1eaff 0%, #e2d7ec 53%, #fffceb 100%);
   color: var(--ne-text-main);
   margin: 0;
   font-family: 'Inter', 'Roboto', 'Helvetica', Arial, sans-serif;
+  transition: background 0.6s cubic-bezier(.55,0,.1,1);
 }
 
+/* Root app container should not override the body gradient,
+   so set its background to transparent */
 .noteease-main-bg {
   min-height: 100vh;
-  background: var(--ne-bg-main);
+  background: transparent;
   color: var(--ne-text-main);
   display: flex;
   flex-direction: column;
+}
+
+/* Smooth visual transition for dark mode toggle */
+body,
+.noteease-main-bg,
+.noteease-main,
+.noteease-header,
+.noteease-footer,
+.noteease-modal,
+.category-chip,
+.noteease-note-card,
+.noteease-searchbar input {
+  transition: background 0.4s cubic-bezier(.55,0,.1,1), color 0.22s, border 0.18s, box-shadow 0.22s;
+}
+
+/* Dark theme background gradient on body */
+.dark-theme body {
+  background: linear-gradient(120deg, #1b2340 0%, #2c3856 65%, #332635 100%);
+  transition: background 0.6s cubic-bezier(.55,0,.1,1);
+}
+
+/* Ensure .dark-theme .noteease-main-bg is also transparent */
+.dark-theme .noteease-main-bg {
+  background: transparent;
 }
 
 .noteease-header {
