@@ -1,0 +1,4 @@
+{
+    "command": "npm run test",
+    "working_directory": "/home/kavia/workspace/code-generation/noteease-34820-4a03823f/noteease_frontend"
+}

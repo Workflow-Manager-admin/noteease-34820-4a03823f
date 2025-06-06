@@ -1,0 +1,349 @@
+:root {
+  --ne-primary: #4A90E2;
+  --ne-secondary: #FFFFFF;
+  --ne-accent: #F5A623;
+  --ne-text-main: #222;
+  --ne-text-secondary: #666;
+  --ne-bg-main: #F4F8FB;
+  --ne-border: #dbdbdb;
+  --ne-shadow: 0 1px 4px rgba(74,144,226,0.07);
+}
+
+body {
+  background: var(--ne-bg-main);
+  color: var(--ne-text-main);
+  margin: 0;
+  font-family: 'Inter', 'Roboto', 'Helvetica', Arial, sans-serif;
+}
+
+.noteease-main-bg {
+  min-height: 100vh;
+  background: var(--ne-bg-main);
+  color: var(--ne-text-main);
+  display: flex;
+  flex-direction: column;
+}
+
+.noteease-header {
+  background: var(--ne-primary);
+  color: var(--ne-secondary);
+  padding: 16px 0 12px 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 1px;
+  box-shadow: var(--ne-shadow);
+}
+.noteease-app-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+}
+.logo-symbol {
+  font-size: 1.3em;
+  color: var(--ne-accent);
+}
+
+.noteease-main {
+  flex: 1;
+  max-width: 620px;
+  margin: 30px auto 0 auto;
+  background: var(--ne-secondary);
+  box-shadow: 0 2px 16px 0 rgba(30, 86, 151, 0.08);
+  border-radius: 12px;
+  padding: 32px 28px 60px 28px;
+  position: relative;
+}
+
+.noteease-searchbar {
+  margin-bottom: 18px;
+  position: relative;
+  width: 100%;
+}
+.noteease-searchbar input {
+  width: 100%;
+  padding: 10px 32px 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--ne-border);
+  font-size: 1rem;
+  outline: none;
+  color: var(--ne-text-main);
+  background: #f7faff;
+  transition: border 0.2s;
+}
+.noteease-searchbar input:focus {
+  border: 1.5px solid var(--ne-primary);
+}
+.noteease-searchbar-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--ne-primary);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.noteease-categories {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.category-chip {
+  border: none;
+  border-radius: 16px;
+  padding: 6px 16px;
+  font-size: 0.98rem;
+  background: #f2f6fb;
+  color: var(--ne-text-secondary);
+  cursor: pointer;
+  transition: all 0.17s;
+  outline: none;
+}
+.category-chip.active,
+.category-chip:hover {
+  background: var(--ne-accent);
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 1px 5px 0 #ffd1862a;
+}
+
+.noteease-note-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.noteease-note-card {
+  display: flex;
+  align-items: flex-start;
+  background: #f8fbff;
+  box-shadow: var(--ne-shadow);
+  border-radius: 8px;
+  padding: 13px 17px 11px 17px;
+  cursor: pointer;
+  position: relative;
+  transition: box-shadow 0.17s;
+  outline: none;
+}
+.noteease-note-card:focus,
+.noteease-note-card:hover {
+  box-shadow: 0 1px 18px 2px #e6eefb;
+  background: #f3f7fe;
+}
+.note-card-body {
+  flex: 1;
+  min-width: 0;
+}
+.note-card-title {
+  font-weight: 600;
+  font-size: 1.07rem;
+  margin-bottom: 2px;
+  color: var(--ne-primary);
+}
+.note-card-snippet {
+  font-size: 0.97rem;
+  color: var(--ne-text-secondary);
+  margin-bottom: 2px;
+  max-width: 410px;
+  white-space: pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.note-card-category {
+  display: inline-block;
+  font-size: 0.75em;
+  background: var(--ne-accent);
+  border-radius: 8px;
+  color: white;
+  padding: 2px 9px;
+  margin-top: 2px;
+  margin-right: 2px;
+}
+
+.note-card-delete {
+  margin-left: 12px;
+  background: none;
+  border: none;
+  color: #e04e42;
+  font-size: 1.05rem;
+  cursor: pointer;
+  padding: 5px;
+  align-self: flex-start;
+  border-radius: 50%;
+  transition: background 0.16s;
+}
+.note-card-delete:hover {
+  background: #fdddd6;
+}
+
+.noteease-empty-message {
+  text-align: center;
+  color: var(--ne-text-secondary);
+  padding: 22px 0 9px 0;
+  font-size: 1.05rem;
+}
+
+.noteease-fab {
+  position: fixed;
+  right: 44px;
+  bottom: 44px;
+  width: 58px;
+  height: 58px;
+  background: var(--ne-primary);
+  border-radius: 50%;
+  color: white;
+  font-size: 2.25rem;
+  border: none;
+  box-shadow: 0 2px 10px 1px #4A90E250;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 201;
+  transition: background 0.18s;
+}
+.noteease-fab:hover {
+  background: var(--ne-accent);
+}
+.fab-plus {
+  line-height: 1;
+  font-weight: bold;
+  font-size: 2.05rem;
+  position: relative;
+  top: -1px;
+}
+
+.noteease-modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #1118;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.noteease-modal {
+  background: var(--ne-secondary);
+  border-radius: 14px;
+  box-shadow: 0 8px 40px 3px #234a8470;
+  padding: 28px 30px 22px 30px;
+  min-width: 310px;
+  max-width: 96vw;
+  width: 410px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: slideDownFade 0.21s cubic-bezier(.39,1.68,.73,1) 1;
+}
+@keyframes slideDownFade {
+  from { transform: translateY(-32px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.noteease-modal h2 {
+  margin: 0 0 10px 0;
+  color: var(--ne-primary);
+  text-align: left;
+  font-size: 1.24rem;
+}
+.noteease-modal-title {
+  width: 100%;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 9px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--ne-border);
+  margin-bottom: 7px;
+  background: #f6faff;
+  color: var(--ne-text-main);
+}
+.noteease-modal textarea {
+  width: 100%;
+  min-height: 100px;
+  font-size: 1.01rem;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--ne-border);
+  line-height: 1.55;
+  background: #f6faff;
+  color: var(--ne-text-main);
+  margin-bottom: 8px;
+  resize: vertical;
+}
+.noteease-modal-options {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 9px;
+  margin-top: 5px;
+}
+.modal-category-input {
+  border-radius: 6px;
+  border: 1.2px solid var(--ne-accent);
+  background: #fff8f1;
+  font-size: 0.97rem;
+  padding: 4px 12px;
+  margin-right: auto;
+  color: var(--ne-text-main);
+}
+
+.modal-save-btn {
+  background: var(--ne-primary);
+  color: var(--ne-secondary);
+  border: none;
+  border-radius: 7px;
+  padding: 7px 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-left: 4px;
+  cursor: pointer;
+  transition: background 0.17s;
+}
+.modal-save-btn:disabled {
+  background: #cfdff3;
+  color: #888;
+  cursor: not-allowed;
+}
+.modal-save-btn:not(:disabled):hover {
+  background: var(--ne-accent);
+}
+.modal-cancel-btn {
+  background: none;
+  border: none;
+  color: #EA5e41;
+  font-size: 1rem;
+  border-radius: 7px;
+  padding: 7px 17px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .15s;
+}
+.modal-cancel-btn:hover {
+  background: #fff0eb;
+}
+
+.noteease-footer {
+  text-align: center;
+  color: var(--ne-text-secondary);
+  font-size: 0.91rem;
+  padding: 18px 0 8px 0;
+  letter-spacing: 0.02em;
+  background: none;
+}
+
+@media (max-width: 750px) {
+  .noteease-main {
+    padding: 24px 4vw 60px 4vw;
+    max-width: 96vw;
+  }
+  .noteease-fab {
+    bottom: 28px;
+    right: 22px;
+  }
+}
